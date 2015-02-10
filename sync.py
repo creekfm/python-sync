@@ -1,5 +1,11 @@
 __author__ = 'forrest'
 
+# TODO: configuration file
+# TODO: email on directory creation (new show - won't play)
+# TODO: log to file and console
+# TODO: daemonize
+# TODO: Auto Rerun (second to last show in podcast RSS)
+
 # basic os functions
 import os
 # logging
@@ -145,8 +151,21 @@ def download_files():
 if __name__ == '__main__':
     # MAIN PROCESS
     # prep logging system
-    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    logger = logging.getLogger(__name__)
+    log_path = "."
+    log_file_name = "sync"
+
+    log_format = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
+    logger = logging.getLogger()
+
+    # log to file
+    log_file_handler = logging.FileHandler("{0}/{1}.log".format(log_path, log_file_name))
+    log_file_handler.setFormatter(log_format)
+    logger.addHandler(log_file_handler)
+
+    # log to console
+    log_console_handler = logging.StreamHandler()
+    log_console_handler.setFormatter(log_format)
+    logger.addHandler(log_console_handler)
 
     logger.info("Program Start")
 
