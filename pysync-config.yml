@@ -1,7 +1,7 @@
 # Configuration parameters for python-sync app for Creek.fm stations
-destination_folder: "C:/temp/audio"
-station_url: "http://bff.fm/"
-key: "G6sDj7sgYT"
+destination_folder: "C:/audio"
+station_url: "http://creek.fm/"
+key: ""
 
 # logging information
 log_level: "DEBUG"
